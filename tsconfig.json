@@ -16,6 +16,16 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+
   }
+  ,    "exclude": [
+    "node_modules",
+    "e2e",
+    "dist",
+    "dist-server",
+    "dist-bdo-pusher",
+    "dist-bdo-receiver",
+    "dist-tests"
+  ]
 }
