@@ -1,0 +1,37 @@
+@import "../../styles.scss";
+
+.nav-list li a.active {
+  color: $base-active-color;
+}
+.nav-list {
+  background: white;
+  box-shadow: 0px 0px 10px $base-background-color;
+  margin: 0;
+  padding: 0;
+  min-height: 40px;
+  border-radius: 0.2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-list li {
+  list-style: none;
+  margin-right: 2rem;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  transition: all 200ms ease-in;
+  color: $base-selected-color;
+}
+
+.nav-list li:first-child {
+  margin-right: auto;
+  margin-left: 2rem;
+  font-weight: 700;
+}
+
+.nav-list li > a:hover {
+  color: $base-active-color;
+}

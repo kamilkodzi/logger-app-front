@@ -1,0 +1,13 @@
+.menu-container {
+  display: flex;
+  min-width: 400px;
+  justify-items: left;
+}
+
+.menu-item {
+  border: solid 1px black;
+  padding: 6px;
+  background-color: black;
+  opacity: 0.4;
+  color: white;
+}
