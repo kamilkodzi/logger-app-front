@@ -4,6 +4,7 @@
   color: $base-active-color;
 }
 .nav-list {
+  font-size: 1.5rem;
   background: white;
   box-shadow: 0px 0px 10px $base-background-color;
   margin: 0;
@@ -13,6 +14,11 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .nav-list li {

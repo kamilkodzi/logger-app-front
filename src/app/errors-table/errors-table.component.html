@@ -1,12 +1,97 @@
-<table>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <div>5</div>
-  <div>6</div>
-  <div>7</div>
-  <div>8</div>
-  <div>9</div>
-  <div>0</div>
-</table>
+<p-dataTable
+  [rowsPerPageOptions]="[50, 100, 200]"
+  [lazy]="true"
+  [paginator]="true"
+  rows="500"
+  [responsive]="true"
+  dataKey="id"
+  [value]="errorsData.data"
+>
+  <p-header>
+    <div class="headercontainer floatfix">
+      <span
+        ><b> <span style="color: rgb(196, 42, 42)">Error</span> logs</b></span
+      >
+    </div>
+  </p-header>
+  <p-column
+    field="logWasCreated"
+    header="Created"
+    [sortable]="true"
+    styleClass="col-bold"
+  >
+    <ng-template let-col let-item="rowData" pTemplate="body">
+      {{ item[col.field] | newDatePipe }}
+    </ng-template>
+  </p-column>
+
+  <p-column field="sendFromCustomer" header="Customer" [sortable]="true">
+    <ng-template let-col let-item="rowData" pTemplate="body">
+      {{ item[col.field] }}
+    </ng-template>
+  </p-column>
+
+  <p-column
+    field="sendFromSystem"
+    header="System"
+    [sortable]="true"
+    [filter]="false"
+  ></p-column>
+
+  <p-column
+    field="sendFromSource"
+    header="Source"
+    [sortable]="true"
+    [filter]="false"
+  ></p-column>
+
+  <p-column
+    field="sendFromUser"
+    header="User"
+    [sortable]="true"
+    [filter]="false"
+  ></p-column>
+
+  <p-column
+    field="errorCode"
+    header="Code"
+    [sortable]="true"
+    [filter]="false"
+  ></p-column>
+
+  <p-column
+    [ngClass]="'kamilTest'"
+    field="errorDescription"
+    header="Description"
+    [sortable]="true"
+    [filter]="false"
+  >
+    <ng-template let-col let-item="rowData" pTemplate="body">
+      {{ item[col.field] }}
+      <span class="more" (click)="showBasicDialog(item[col.field])">more</span>
+    </ng-template>
+  </p-column>
+
+  <p-column
+    field="comment"
+    header="Comments"
+    [sortable]="true"
+    [filter]="false"
+  ></p-column>
+</p-dataTable>
+
+<p-dialog
+  header="Header"
+  [(visible)]="displayBasic"
+  [style]="{ width: '400px' }"
+  [baseZIndex]="10000"
+>
+  <p id="message">
+    {{ message }}
+  </p>
+  <p-button
+    (click)="displayBasic = false"
+    label="OK"
+    styleClass="p-button-text"
+  ></p-button>
+</p-dialog>
