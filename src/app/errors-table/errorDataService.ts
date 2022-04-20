@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ErrorsData } from "./errorsData";
 import { Observable, of } from "rxjs";
@@ -12,7 +12,8 @@ export class ErrorsService {
 
   getErrors(): Observable<ErrorsData> {
     return this.http.get<ErrorsData>(
-      "http://localhost:4050/errors?page=1&rowslimit=100"
+      "https://localhost:4050/errors?page=1&rowslimit=100",
+      { headers: new HttpHeaders().set("Authorization", "Basic QUNNRToxMjM0") }
     );
   }
 }

@@ -24,6 +24,7 @@ import { ProgressBarModule } from "primeng/progressbar";
 import { InputTextModule } from "primeng/inputtext";
 import { DataTableModule } from "primeng/primeng";
 import { NewDatePipePipe } from "./new-date-pipe.pipe";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NewDatePipePipe } from "./new-date-pipe.pipe";
     LogsTableComponent,
     SettingViewComponent,
     NewDatePipePipe,
+    LoginComponent,
   ],
   imports: [
     DataTableModule,
