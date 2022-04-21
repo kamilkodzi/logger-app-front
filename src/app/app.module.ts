@@ -24,7 +24,8 @@ import { ProgressBarModule } from "primeng/progressbar";
 import { InputTextModule } from "primeng/inputtext";
 import { DataTableModule } from "primeng/primeng";
 import { NewDatePipePipe } from "./new-date-pipe.pipe";
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from "./login/login.component";
+import { AuthGuard } from "./auth.guard";
 
 @NgModule({
   declarations: [
@@ -74,7 +75,7 @@ import { LoginComponent } from './login/login.component';
     ProgressBarModule,
     HttpClientModule,
   ],
-  providers: [ErrorsService],
+  providers: [ErrorsService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

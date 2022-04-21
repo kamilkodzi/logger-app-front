@@ -5,11 +5,16 @@ import { HomeViewComponent } from "./home-view/home-view.component";
 import { LoginComponent } from "./login/login.component";
 import { LogsTableComponent } from "./logs-table/logs-table.component";
 import { SettingViewComponent } from "./setting-view/setting-view.component";
+import { AuthGuard } from "./auth.guard";
 
 const routes: Routes = [
   { path: "error-table", component: ErrorsTableComponent },
   { path: "home", component: HomeViewComponent },
-  { path: "logs-table", component: LogsTableComponent },
+  {
+    path: "logs-table",
+    component: LogsTableComponent,
+    canActivate: [AuthGuard],
+  },
   { path: "settings", component: LoginComponent },
 ];
 

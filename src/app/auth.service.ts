@@ -7,10 +7,16 @@ import { HttpClient, HttpResponse } from "@angular/common/http";
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  loggedInStatus = false;
+
   getUserDetails(username, password) {
-    return this.http.post("http://localhost:4050/login", {
+    return this.http.post("api/login", {
       username,
       password,
     });
+  }
+
+  get isLoggedIn() {
+    return true;
   }
 }
