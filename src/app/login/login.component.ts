@@ -1,5 +1,5 @@
-import { HttpResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 
 @Component({
@@ -8,9 +8,11 @@ import { AuthService } from "../auth.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  constructor(private Auth: AuthService) {}
+  constructor(private Auth: AuthService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // if (this.Auth.isLoggedIn) this.router.navigate(["home"]);
+  }
   loginUser(event) {
     event.preventDefault();
     const target = event.target;
@@ -18,10 +20,9 @@ export class LoginComponent implements OnInit {
     const password = target.querySelector("#password").value;
 
     this.Auth.logIn(username, password).subscribe((data) => {
-      if (data["body"] == "Hello world") {
-        window.alert("SUPER credentials");
+      if (data.status) {
+        this.router.navigate(["home"]);
       }
-      window.alert("invalid credentials");
     });
   }
 }

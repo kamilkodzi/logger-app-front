@@ -5,17 +5,24 @@ import { HomeViewComponent } from "./home-view/home-view.component";
 import { LoginComponent } from "./login/login.component";
 import { LogsTableComponent } from "./logs-table/logs-table.component";
 import { SettingViewComponent } from "./setting-view/setting-view.component";
-import { AuthGuard } from "./auth.guard";
+import { AuthGuard, IsLoggedIn } from "./auth.guard";
+import { UserService } from "./user.service";
 
 const routes: Routes = [
-  { path: "error-table", component: ErrorsTableComponent },
-  { path: "home", component: HomeViewComponent },
   {
-    path: "logs-table",
-    component: LogsTableComponent,
+    path: "",
     canActivate: [AuthGuard],
+    children: [
+      { path: "error-table", component: ErrorsTableComponent },
+      { path: "home", component: HomeViewComponent },
+      {
+        path: "logs-table",
+        component: LogsTableComponent,
+      },
+      { path: "settings", component: SettingViewComponent },
+    ],
   },
-  { path: "settings", component: LoginComponent },
+  { path: "login", component: LoginComponent, canActivate: [IsLoggedIn] },
 ];
 
 @NgModule({
